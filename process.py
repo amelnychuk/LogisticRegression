@@ -17,7 +17,8 @@ def stdNormalize(dataFrame, columns):
 
     std_scale = StandardScaler().fit(dataFrame[columns])
     dataFrame_std = std_scale.transform(dataFrame[columns])
-    return dataFrame_std
+    dataFrame = dataFrame[columns] = dataFrame_std
+    return dataFrame
 
 def getData():
 
@@ -40,8 +41,8 @@ def getData():
     #normalize
 
     columns = ["n_products_viewed", "visit_duration"]
-    Xtrain[columns] = stdNormalize(Xtrain, columns)
-    Xtest[columns] = stdNormalize(Xtest, columns)
+    Xtrain = stdNormalize(Xtrain, columns)
+    Xtest = stdNormalize(Xtest, columns)
 
 
     return Xtrain, Ytrain, Xtest, Ytest
