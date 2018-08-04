@@ -13,11 +13,12 @@ def one_hot(dataFrame, feature):
 
     return dataFrame
 
-def stdNormalize(dataFrame, columns):
+def stdNormalize(dataFrame, features):
 
-    std_scale = StandardScaler().fit(dataFrame[columns])
-    dataFrame_std = std_scale.transform(dataFrame[columns])
-    dataFrame = dataFrame[columns] = dataFrame_std
+    std_scale = StandardScaler().fit(dataFrame[features])
+    dataFrame_std = std_scale.transform(dataFrame[features])
+    dataFrame = dataFrame[features] = dataFrame_std
+
     return dataFrame
 
 def getData():
@@ -40,9 +41,9 @@ def getData():
 
     #normalize
 
-    columns = ["n_products_viewed", "visit_duration"]
-    Xtrain = stdNormalize(Xtrain, columns)
-    Xtest = stdNormalize(Xtest, columns)
+    features = ["n_products_viewed", "visit_duration"]
+    Xtrain = stdNormalize(Xtrain, features)
+    Xtest = stdNormalize(Xtest, features)
 
 
     return Xtrain, Ytrain, Xtest, Ytest
