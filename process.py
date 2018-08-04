@@ -2,6 +2,7 @@
 
 import numpy as np
 from sklearn.utils import shuffle
+from sklearn.preprocessing import StandardScaler
 import pandas
 
 def one_hot(dataFrame, feature):
@@ -12,11 +13,11 @@ def one_hot(dataFrame, feature):
 
     return dataFrame
 
-def normalize(X, feature):
-    m = X[feature].mean()
-    s = X[feature].std()
+def stdNormalize(dataFrame, columns):
 
-    X[feature] = X[feature].apply(lambda x: (x - m) / s)
+    std_scale = StandardScaler().fit(dataFrame[columns])
+    dataFrame_std = std_scale.transform(dataFrame[columns])
+    return dataFrame_std
 
 def getData():
 
@@ -37,9 +38,11 @@ def getData():
     Ytest = Y[-100:]
 
     #normalize
-    for i in ("n_products_viewed","visit_duration"):
-        normalize(Xtrain, i)
-        normalize(Xtest, i)
+
+    columns = ["n_products_viewed", "visit_duration"]
+    Xtrain[columns] = stdNormalize(Xtrain, columns)
+    Xtest[columns] = stdNormalize(Xtest, columns)
+
 
     return Xtrain, Ytrain, Xtest, Ytest
 
@@ -48,6 +51,8 @@ def getData():
 def get_binary_data():
     Xtrain, Ytrain, Xtest, Ytest = getData()
     return Xtrain[Ytrain < 1], Ytrain[Ytrain < 1], Xtest[Ytest < 1], Ytest[Ytest < 1]
+
+a,b,c,d = get_binary_data()
 
 
 
