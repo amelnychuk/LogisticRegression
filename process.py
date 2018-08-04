@@ -50,8 +50,6 @@ def get_binary_data():
     return Xtrain[Ytrain < 1], Ytrain[Ytrain < 1], Xtest[Ytest < 1], Ytest[Ytest < 1]
 
 
-Xtrain, Ytrain, Xtest, Ytest = get_binary_data()
-
 
 
 
