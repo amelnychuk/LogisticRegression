@@ -1,6 +1,7 @@
 from __future__ import print_function
 
 import numpy as np
+import matplotlib.pyplot as plt
 print("poopy1")
 N = 100
 D = 2
@@ -24,16 +25,21 @@ def sigmoid(z):
 Y = sigmoid(z)
 
 
-def cross_entropy(T , Y):
-    E = 0
-    for i in xrange(N):
-        if T[i] == 1:
-            E -= np.log(Y[i])
-        else:
-            E -= np.log(1 - Y[i])
-    return E
+def cross_entropy(T,Y):
+    return -np.sum(T * np.log(Y) + (1-T)*np.log(1-Y))
 
 print("derp")
-if __name__ == '__main__':
-    print("poopy")
-    print(cross_entropy(T, Y))
+
+print("Cross entropy:")
+print(cross_entropy(T, Y))
+
+
+w = np.array([0, 4, 4])
+
+plt.scatter(X[:, 0], X[:, 1], c=T, s=100, alpha=1)
+plt.show()
+z= Xb.dot(w)
+Y = sigmoid(z)
+
+print("Closed form cross-entropy:")
+print(cross_entropy(T, Y))

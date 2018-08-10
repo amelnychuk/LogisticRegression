@@ -40,11 +40,9 @@ def getData():
     Ytest = Y[-100:]
 
     #normalize
-
     features = ["n_products_viewed", "visit_duration"]
     Xtrain = stdNormalize(Xtrain, features)
     Xtest = stdNormalize(Xtest, features)
-
 
     return Xtrain, Ytrain, Xtest, Ytest
 
@@ -52,6 +50,7 @@ def getData():
 
 def get_binary_data():
     Xtrain, Ytrain, Xtest, Ytest = getData()
+
     return Xtrain[Ytrain < 1], Ytrain[Ytrain < 1], Xtest[Ytest < 1], Ytest[Ytest < 1]
 
 
