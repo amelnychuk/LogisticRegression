@@ -2,7 +2,7 @@ from __future__ import print_function
 
 import numpy as np
 import matplotlib.pyplot as plt
-print("poopy1")
+
 N = 100
 D = 2
 
@@ -28,7 +28,7 @@ Y = sigmoid(z)
 def cross_entropy(T,Y):
     return -np.sum(T * np.log(Y) + (1-T)*np.log(1-Y))
 
-print("derp")
+
 
 print("Cross entropy:")
 print(cross_entropy(T, Y))
