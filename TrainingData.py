@@ -1,3 +1,6 @@
+
+from process import get_binary_data
+
 class TrainingData():
     def __init__(self):
         self.X = DataPair()
