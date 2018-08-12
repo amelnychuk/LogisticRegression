@@ -39,7 +39,7 @@ for i in range(1000):
     if i % 100 == 0:
         print(cross_entropy(T, Y))
 
-    w += learning_rate * (Xb.T.dot(T-Y) -(.01 * w))
+    w += learning_rate * (Xb.T.dot(T-Y) - (.01 * w))
     Y = sigmoid(Xb.dot(w))
 
 print ("Final w: ", w)
