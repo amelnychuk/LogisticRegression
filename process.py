@@ -17,7 +17,7 @@ def stdNormalize(dataFrame, features):
 
     std_scale = StandardScaler().fit(dataFrame[features])
     dataFrame_std = std_scale.transform(dataFrame[features])
-    dataFrame = dataFrame[features] = dataFrame_std
+    dataFrame[features] = dataFrame_std
 
     return dataFrame
 
