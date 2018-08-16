@@ -54,3 +54,13 @@ def getBinaryData():
                 Y.append(y)
                 X.append([int(p) for p in row[1].split()])
     return np.array(X) / 255.0, np.array(Y)
+
+
+def sigmoid(z):
+    return 1 / (1 + np.exp(-z))
+
+def sigmoid_cost(T, Y):
+    return -np.sum(T*np.log(Y) + (1-T)*np.log(1-Y))
+
+def error_rate(targets, predictions):
+    return np.mean(targets != predictions)
